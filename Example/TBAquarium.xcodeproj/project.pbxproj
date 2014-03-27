@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E912C7618E418820000EF80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C7518E418820000EF80 /* Foundation.framework */; };
+		0E912C7818E418820000EF80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C7718E418820000EF80 /* CoreGraphics.framework */; };
+		0E912C7A18E418820000EF80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C7918E418820000EF80 /* UIKit.framework */; };
+		0E912C8018E418820000EF80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E912C7E18E418820000EF80 /* InfoPlist.strings */; };
+		0E912C8218E418820000EF80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E912C8118E418820000EF80 /* main.m */; };
+		0E912C8618E418820000EF80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E912C8518E418820000EF80 /* AppDelegate.m */; };
+		0E912C8818E418820000EF80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E912C8718E418820000EF80 /* Images.xcassets */; };
+		0E912C8F18E418820000EF80 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C8E18E418820000EF80 /* XCTest.framework */; };
+		0E912C9018E418820000EF80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C7518E418820000EF80 /* Foundation.framework */; };
+		0E912C9118E418820000EF80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C7918E418820000EF80 /* UIKit.framework */; };
+		0E912C9918E418820000EF80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E912C9718E418820000EF80 /* InfoPlist.strings */; };
+		0E912C9B18E418820000EF80 /* TBAquariumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E912C9A18E418820000EF80 /* TBAquariumTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E912C9218E418820000EF80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E912C6A18E418820000EF80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E912C7118E418820000EF80;
+			remoteInfo = TBAquarium;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E912C7218E418820000EF80 /* TBAquarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBAquarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E912C7518E418820000EF80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0E912C7718E418820000EF80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0E912C7918E418820000EF80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0E912C7D18E418820000EF80 /* TBAquarium-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TBAquarium-Info.plist"; sourceTree = "<group>"; };
+		0E912C7F18E418820000EF80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E912C8118E418820000EF80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0E912C8318E418820000EF80 /* TBAquarium-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TBAquarium-Prefix.pch"; sourceTree = "<group>"; };
+		0E912C8418E418820000EF80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0E912C8518E418820000EF80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0E912C8718E418820000EF80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0E912C8D18E418820000EF80 /* TBAquariumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TBAquariumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E912C8E18E418820000EF80 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0E912C9618E418820000EF80 /* TBAquariumTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TBAquariumTests-Info.plist"; sourceTree = "<group>"; };
+		0E912C9818E418820000EF80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E912C9A18E418820000EF80 /* TBAquariumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAquariumTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E912C6F18E418820000EF80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E912C7818E418820000EF80 /* CoreGraphics.framework in Frameworks */,
+				0E912C7A18E418820000EF80 /* UIKit.framework in Frameworks */,
+				0E912C7618E418820000EF80 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E912C8A18E418820000EF80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E912C8F18E418820000EF80 /* XCTest.framework in Frameworks */,
+				0E912C9118E418820000EF80 /* UIKit.framework in Frameworks */,
+				0E912C9018E418820000EF80 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E912C6918E418820000EF80 = {
+			isa = PBXGroup;
+			children = (
+				0E912C7B18E418820000EF80 /* TBAquarium */,
+				0E912C9418E418820000EF80 /* TBAquariumTests */,
+				0E912C7418E418820000EF80 /* Frameworks */,
+				0E912C7318E418820000EF80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E912C7318E418820000EF80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E912C7218E418820000EF80 /* TBAquarium.app */,
+				0E912C8D18E418820000EF80 /* TBAquariumTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E912C7418E418820000EF80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E912C7518E418820000EF80 /* Foundation.framework */,
+				0E912C7718E418820000EF80 /* CoreGraphics.framework */,
+				0E912C7918E418820000EF80 /* UIKit.framework */,
+				0E912C8E18E418820000EF80 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E912C7B18E418820000EF80 /* TBAquarium */ = {
+			isa = PBXGroup;
+			children = (
+				0E912C8418E418820000EF80 /* AppDelegate.h */,
+				0E912C8518E418820000EF80 /* AppDelegate.m */,
+				0E912C8718E418820000EF80 /* Images.xcassets */,
+				0E912C7C18E418820000EF80 /* Supporting Files */,
+			);
+			path = TBAquarium;
+			sourceTree = "<group>";
+		};
+		0E912C7C18E418820000EF80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E912C7D18E418820000EF80 /* TBAquarium-Info.plist */,
+				0E912C7E18E418820000EF80 /* InfoPlist.strings */,
+				0E912C8118E418820000EF80 /* main.m */,
+				0E912C8318E418820000EF80 /* TBAquarium-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E912C9418E418820000EF80 /* TBAquariumTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E912C9A18E418820000EF80 /* TBAquariumTests.m */,
+				0E912C9518E418820000EF80 /* Supporting Files */,
+			);
+			path = TBAquariumTests;
+			sourceTree = "<group>";
+		};
+		0E912C9518E418820000EF80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E912C9618E418820000EF80 /* TBAquariumTests-Info.plist */,
+				0E912C9718E418820000EF80 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E912C7118E418820000EF80 /* TBAquarium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E912C9E18E418820000EF80 /* Build configuration list for PBXNativeTarget "TBAquarium" */;
+			buildPhases = (
+				0E912C6E18E418820000EF80 /* Sources */,
+				0E912C6F18E418820000EF80 /* Frameworks */,
+				0E912C7018E418820000EF80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TBAquarium;
+			productName = TBAquarium;
+			productReference = 0E912C7218E418820000EF80 /* TBAquarium.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0E912C8C18E418820000EF80 /* TBAquariumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E912CA118E418820000EF80 /* Build configuration list for PBXNativeTarget "TBAquariumTests" */;
+			buildPhases = (
+				0E912C8918E418820000EF80 /* Sources */,
+				0E912C8A18E418820000EF80 /* Frameworks */,
+				0E912C8B18E418820000EF80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E912C9318E418820000EF80 /* PBXTargetDependency */,
+			);
+			name = TBAquariumTests;
+			productName = TBAquariumTests;
+			productReference = 0E912C8D18E418820000EF80 /* TBAquariumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E912C6A18E418820000EF80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = matsuda;
+				TargetAttributes = {
+					0E912C8C18E418820000EF80 = {
+						TestTargetID = 0E912C7118E418820000EF80;
+					};
+				};
+			};
+			buildConfigurationList = 0E912C6D18E418820000EF80 /* Build configuration list for PBXProject "TBAquarium" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0E912C6918E418820000EF80;
+			productRefGroup = 0E912C7318E418820000EF80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E912C7118E418820000EF80 /* TBAquarium */,
+				0E912C8C18E418820000EF80 /* TBAquariumTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E912C7018E418820000EF80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E912C8018E418820000EF80 /* InfoPlist.strings in Resources */,
+				0E912C8818E418820000EF80 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E912C8B18E418820000EF80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E912C9918E418820000EF80 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E912C6E18E418820000EF80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E912C8618E418820000EF80 /* AppDelegate.m in Sources */,
+				0E912C8218E418820000EF80 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E912C8918E418820000EF80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E912C9B18E418820000EF80 /* TBAquariumTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E912C9318E418820000EF80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E912C7118E418820000EF80 /* TBAquarium */;
+			targetProxy = 0E912C9218E418820000EF80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0E912C7E18E418820000EF80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E912C7F18E418820000EF80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0E912C9718E418820000EF80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E912C9818E418820000EF80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0E912C9C18E418820000EF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0E912C9D18E418820000EF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0E912C9F18E418820000EF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TBAquarium/TBAquarium-Prefix.pch";
+				INFOPLIST_FILE = "TBAquarium/TBAquarium-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0E912CA018E418820000EF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TBAquarium/TBAquarium-Prefix.pch";
+				INFOPLIST_FILE = "TBAquarium/TBAquarium-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0E912CA218E418820000EF80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TBAquarium.app/TBAquarium";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TBAquarium/TBAquarium-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TBAquariumTests/TBAquariumTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0E912CA318E418820000EF80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TBAquarium.app/TBAquarium";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TBAquarium/TBAquarium-Prefix.pch";
+				INFOPLIST_FILE = "TBAquariumTests/TBAquariumTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E912C6D18E418820000EF80 /* Build configuration list for PBXProject "TBAquarium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E912C9C18E418820000EF80 /* Debug */,
+				0E912C9D18E418820000EF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E912C9E18E418820000EF80 /* Build configuration list for PBXNativeTarget "TBAquarium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E912C9F18E418820000EF80 /* Debug */,
+				0E912CA018E418820000EF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E912CA118E418820000EF80 /* Build configuration list for PBXNativeTarget "TBAquariumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E912CA218E418820000EF80 /* Debug */,
+				0E912CA318E418820000EF80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E912C6A18E418820000EF80 /* Project object */;
+}
