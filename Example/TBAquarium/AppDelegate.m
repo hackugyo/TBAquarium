@@ -7,6 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import <TBAquarium.h>
+#import "ExampleMigration.h"
+
+static NSString * const kDBFileName = @"tbaquarium.db";
+
+@interface AppDelegate ()
+@property (strong, nonatomic) TBDatabase *database;
+@end
 
 @implementation AppDelegate
 
@@ -14,6 +22,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [self prepareDatabase];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -29,11 +38,13 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self.database close];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self.database open];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -44,6 +55,29 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self.database close];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)prepareDatabase
+{
+    self.database = [TBDatabase databaseWithFileName:kDBFileName];
+#if DEBUG
+    //    self.database.traceExecution = YES;
+#endif
+    [self.database open];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didMigrate:) name:TBMigrationDidMigrateNotification object:nil];
+    [ExampleMigration migrateWithDatabase:self.database];
+}
+
+- (void)didMigrate:(NSNotification *)notification
+{
+    NSLog(@"--------------- didMigrate -------------------");
+    NSLog(@"result >>>>> %@", notification.userInfo[@"result"]);
 }
 
 @end

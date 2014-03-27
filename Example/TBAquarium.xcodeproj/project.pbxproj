@@ -19,6 +19,7 @@
 		0E912C9118E418820000EF80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E912C7918E418820000EF80 /* UIKit.framework */; };
 		0E912C9918E418820000EF80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E912C9718E418820000EF80 /* InfoPlist.strings */; };
 		0E912C9B18E418820000EF80 /* TBAquariumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E912C9A18E418820000EF80 /* TBAquariumTests.m */; };
+		0E912CAC18E424810000EF80 /* ExampleMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E912CAB18E424810000EF80 /* ExampleMigration.m */; };
 		40482C0D8CAA4F74ADAF5202 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44965ACEEB754C96AE6D1E38 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		0E912C9618E418820000EF80 /* TBAquariumTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TBAquariumTests-Info.plist"; sourceTree = "<group>"; };
 		0E912C9818E418820000EF80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0E912C9A18E418820000EF80 /* TBAquariumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAquariumTests.m; sourceTree = "<group>"; };
+		0E912CAA18E424810000EF80 /* ExampleMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleMigration.h; sourceTree = "<group>"; };
+		0E912CAB18E424810000EF80 /* ExampleMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleMigration.m; sourceTree = "<group>"; };
 		1EA2B8D8B46B4C8E90004734 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		44965ACEEB754C96AE6D1E38 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -115,6 +118,8 @@
 			children = (
 				0E912C8418E418820000EF80 /* AppDelegate.h */,
 				0E912C8518E418820000EF80 /* AppDelegate.m */,
+				0E912CAA18E424810000EF80 /* ExampleMigration.h */,
+				0E912CAB18E424810000EF80 /* ExampleMigration.m */,
 				0E912C8718E418820000EF80 /* Images.xcassets */,
 				0E912C7C18E418820000EF80 /* Supporting Files */,
 			);
@@ -280,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E912CAC18E424810000EF80 /* ExampleMigration.m in Sources */,
 				0E912C8618E418820000EF80 /* AppDelegate.m in Sources */,
 				0E912C8218E418820000EF80 /* main.m in Sources */,
 			);
