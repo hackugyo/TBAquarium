@@ -121,6 +121,9 @@ static NSMutableDictionary *__tableCache = nil;
 - (NSDate *)createdAt
 {
     if (!_createdAt) return nil;
+    if ([_createdAt isKindOfClass:[NSDate class]]) {
+        return _createdAt;
+    }
     NSNumber *numberOfdate = (NSNumber *)_createdAt;
     return [NSDate dateWithTimeIntervalSince1970:[numberOfdate unsignedIntegerValue]];
 }

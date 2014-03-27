@@ -12,7 +12,7 @@
 @interface TBModel : NSObject
 
 @property (nonatomic, assign) sqlite_int64  primaryKey;
-@property (nonatomic, retain) NSDate     *createdAt;
+@property (nonatomic, strong) NSDate     *createdAt;
 @property (nonatomic, copy)   NSString   *errorMessage;
 
 + (NSString *)tableName;
