@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *TBMigrationDidMigrateNotification;
+FOUNDATION_EXTERN NSString * const TBMigrationDidMigrateNotification;
 
 @class FMDatabase;
 

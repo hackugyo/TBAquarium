@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class FMDatabase;
+#import "TBDatabase.h"
 
 @interface TBModel : NSObject
 

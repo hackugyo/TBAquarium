@@ -10,7 +10,7 @@
 #import "TBMigration.h"
 #import "FMDatabase.h"
 
-NSString *TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNotification";
+NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNotification";
 
 @interface FMDatabase ()
 - (BOOL)executeUpdate:(NSString*)sql error:(NSError**)outErr withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
