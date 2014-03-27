@@ -1,0 +1,21 @@
+PODS:
+  - FMDB (2.2):
+    - FMDB/standard
+  - FMDB/common (2.2)
+  - FMDB/standard (2.2):
+    - FMDB/common
+  - TBAquarium (0.0.1):
+    - FMDB (~> 2.2)
+
+DEPENDENCIES:
+  - TBAquarium (from `..`)
+
+EXTERNAL SOURCES:
+  TBAquarium:
+    :path: ..
+
+SPEC CHECKSUMS:
+  FMDB: 97472cfacf0d9e445e915704fb43b4b142799c36
+  TBAquarium: f65ef688d0238939708bfeaeedb358330b4ead1c
+
+COCOAPODS: 0.29.0
