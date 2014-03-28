@@ -71,7 +71,8 @@ static NSString * const kDBFileName = @"tbaquarium.db";
 #endif
     [self.database open];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didMigrate:) name:TBMigrationDidMigrateNotification object:nil];
-    [ExampleMigration migrateWithDatabase:self.database];
+    // [ExampleMigration migrateWithDatabase:self.database];
+    [ExampleMigration asyncMigrateWithDatabase:self.database];
 }
 
 - (void)didMigrate:(NSNotification *)notification

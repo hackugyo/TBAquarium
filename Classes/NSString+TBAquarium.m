@@ -7,7 +7,6 @@
 //
 
 #import "NSString+TBAquarium.h"
-#import "TBAquarium.h"
 
 static NSDictionary *tb_plurals = nil;
 
@@ -41,7 +40,8 @@ static NSDictionary *tb_plurals = nil;
 
 - (NSString *)tb_pluralizeString
 {
-    NSArray *keys = [[[self class] tb_dictionaryPlurals] allKeys];
+    NSDictionary *plurals = [[self class] tb_dictionaryPlurals];
+    NSArray *keys = [plurals allKeys];
     NSString *replaceStr = self;
     for (NSString *key in keys) {
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:key
@@ -50,7 +50,7 @@ static NSDictionary *tb_plurals = nil;
         NSString *s = [regex stringByReplacingMatchesInString:self
                                                       options:NSMatchingReportCompletion
                                                         range:NSMakeRange(0, self.length)
-                                                 withTemplate:[[[self class] tb_dictionaryPlurals] objectForKey:key]];
+                                                 withTemplate:[plurals objectForKey:key]];
         if (![self isEqualToString:s]) replaceStr = s;
     }
     return replaceStr;

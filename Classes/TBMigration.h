@@ -10,15 +10,28 @@
 
 FOUNDATION_EXTERN NSString * const TBMigrationDidMigrateNotification;
 
-@class FMDatabase;
+@class TBDatabase;
 
 @interface TBMigration : NSObject
 
-+ (void)migrateWithDatabase:(FMDatabase *)database;
++ (BOOL)migrateWithDatabase:(TBDatabase *)database;
++ (void)asyncMigrateWithDatabase:(TBDatabase *)database;
++ (NSUInteger)databaseVersion:(TBDatabase *)database;
 
 @end
 
-@interface TBMigration (Protected)
+@interface TBMigration ()
+
+/**
+ Override this method for implementing migration.
+
+ Migrations for database version 1 will run here.
+ if ([self databaseVersion] < 2) {
+    [self createXXXTable];
+    return YES;
+ }
+ */
+- (BOOL)migrateWithDatabaseVersion:(NSUInteger)version;
 
 - (BOOL)executeMigration:(NSString*)sql, ...;
 

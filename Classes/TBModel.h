@@ -11,15 +11,19 @@
 
 @interface TBModel : NSObject
 
-@property (nonatomic, assign) sqlite_int64  primaryKey;
+@property (nonatomic, assign) sqlite_int64 primaryKey;
 @property (nonatomic, strong) NSDate     *createdAt;
 @property (nonatomic, copy)   NSString   *errorMessage;
 
 + (NSString *)tableName;
-+ (void)setDatabase:(FMDatabase *)database;
++ (void)setDatabase:(TBDatabase *)database;
++ (TBDatabase *)database;
++ (instancetype)findById:(NSUInteger)primaryKey;
 + (NSArray *)findAll;
 + (NSArray *)findWithSql:(NSString *)sql withParameters:(NSArray *)parameters;
++ (NSArray *)findWithSql:(NSString *)sql withParameters:(NSArray *)parameters resultBlock:(id (^)(FMResultSet *resultSet))resultBlock;
 + (NSArray *)findWithCondition:(NSString *)condition withParameters:(NSArray *)parameters;
++ (NSArray *)findWithConditionForColumn:(NSString *)column withParameters:(NSArray *)parameters;
 + (NSUInteger)count;
 
 - (NSArray *)columnsWithoutPrimaryKey;

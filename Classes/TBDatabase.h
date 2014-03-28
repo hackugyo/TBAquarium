@@ -11,5 +11,6 @@
 @interface TBDatabase : FMDatabase
 
 + (instancetype)databaseWithFileName:(NSString *)fileName;
+- (NSArray *)columnsForTableName:(NSString *)tableName;
 
 @end

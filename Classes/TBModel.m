@@ -6,12 +6,10 @@
 //  Copyright (c) 2014年 matsuda. All rights reserved.
 //
 
-#import "TBAquarium.h"
 #import "TBModel.h"
 #import "NSString+TBAquarium.h"
-#import "FMDatabase+TBAquarium.h"
 
-static FMDatabase *__database = nil;
+static TBDatabase *__database = nil;
 static NSMutableDictionary *__tableCache = nil;
 
 
@@ -27,14 +25,14 @@ static NSMutableDictionary *__tableCache = nil;
 
 @implementation TBModel
 
-+ (void)setDatabase:(FMDatabase *)database
++ (void)setDatabase:(TBDatabase *)database
 {
     if (__database != database) {
         __database = database;
     }
 }
 
-+ (FMDatabase *)database
++ (TBDatabase *)database
 {
     return __database;
 }
@@ -56,7 +54,7 @@ static NSMutableDictionary *__tableCache = nil;
     return [[[parts componentsJoinedByString:@"_"] tb_pluralizeString] lowercaseString];
 }
 
-- (FMDatabase *)database
+- (TBDatabase *)database
 {
     return [[self class] database];
 }
@@ -138,6 +136,16 @@ static NSMutableDictionary *__tableCache = nil;
 
 #pragma mark - Finder Methods
 
++ (instancetype)findById:(NSUInteger)primaryKey
+{
+    NSArray *results = [self findWithCondition:@"primaryKey = ?" withParameters:@[@(primaryKey)]];
+    if ([results count]) {
+        return results[0];
+    } else {
+        return nil;
+    }
+}
+
 + (NSArray *)findAll
 {
     return [self findWithSql:[NSString stringWithFormat:@"SELECT * FROM %@", [self tableName]] withParameters:nil];
@@ -145,14 +153,25 @@ static NSMutableDictionary *__tableCache = nil;
 
 + (NSArray *)findWithSql:(NSString *)sql withParameters:(NSArray *)parameters
 {
+    __weak typeof(self) wself = self;
+    return [self findWithSql:sql withParameters:parameters resultBlock:^id(FMResultSet *resultSet) {
+        TBModel *model = [wself new];
+        [model setValuesForKeysWithDictionary:[resultSet resultDictionary]];
+        model.savedInDatabase = YES;
+        return model;
+    }];
+}
+
++ (NSArray *)findWithSql:(NSString *)sql withParameters:(NSArray *)parameters resultBlock:(id (^)(FMResultSet *resultSet))resultBlock
+{
     [self assertDatabaseExists];
     NSMutableArray *results = [@[] mutableCopy];
     FMResultSet  *resultSet = [[self database] executeQuery:sql withArgumentsInArray:parameters];
-    while ([resultSet next]) {
-        TBModel *model = [self new];
-        [model setValuesForKeysWithDictionary:[resultSet resultDictionary]];
-        model.savedInDatabase = YES;
-        [results addObject:model];
+    if (resultBlock) {
+        while ([resultSet next]) {
+            id obj = resultBlock(resultSet);
+            [results addObject:obj];
+        }
     }
     return results;
 }
@@ -160,6 +179,20 @@ static NSMutableDictionary *__tableCache = nil;
 + (NSArray *)findWithCondition:(NSString *)condition withParameters:(NSArray *)parameters
 {
     return [self findWithSql:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@", [self tableName], condition] withParameters:parameters];
+}
+
++ (NSArray *)findWithConditionForColumn:(NSString *)column withParameters:(NSArray *)parameters
+{
+    NSInteger count = [parameters count];
+    if (count < 1) return nil;
+
+    NSMutableArray *binds = [NSMutableArray array];
+    for (NSInteger i = 0; i < count; i++) {
+        [binds addObject:@"?"];
+    }
+    NSString *sql = [NSString stringWithFormat:@"%@ IN (%@)", column, [binds componentsJoinedByString:@","]];
+
+    return [self findWithCondition:sql withParameters:parameters];
 }
 
 + (NSUInteger)count

@@ -6,18 +6,18 @@
 //  Copyright (c) 2014年 matsuda. All rights reserved.
 //
 
-#import "TBAquarium.h"
 #import "TBMigration.h"
-#import "FMDatabase.h"
+#import "TBDatabase.h"
 
 NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNotification";
+static NSString * const TBApplicationPropertiesKeyDatabaseVersion = @"databaseVersion";
 
 @interface FMDatabase ()
 - (BOOL)executeUpdate:(NSString*)sql error:(NSError**)outErr withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
 @end
 
 @interface TBMigration ()
-@property (readonly, nonatomic) FMDatabase *database;
+@property (readonly, nonatomic) TBDatabase *database;
 @end
 
 @implementation TBMigration
@@ -25,12 +25,12 @@ NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNoti
 - (id)init
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must use `migrateWithDatabase:` or `asyncMigrateWithDatabase:target:action:`"]
+                                   reason:[NSString stringWithFormat:@"You must use `migrateWithDatabase:` or `asyncMigrateWithDatabase:`"]
                                  userInfo:nil];
     return nil;
 }
 
-- (id)initWithDatabase:(FMDatabase *)database
+- (id)initWithDatabase:(TBDatabase *)database
 {
     self = [super init];
     if (self) {
@@ -39,7 +39,13 @@ NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNoti
     return self;
 }
 
-+ (void)migrateWithDatabase:(FMDatabase *)database
++ (BOOL)migrateWithDatabase:(TBDatabase *)database
+{
+    TBMigration *migration = [[self alloc] initWithDatabase:database];
+    return [migration migrate];
+}
+
++ (void)asyncMigrateWithDatabase:(TBDatabase *)database
 {
     __block TBMigration *migration = [[self alloc] initWithDatabase:database];
 
@@ -50,6 +56,12 @@ NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNoti
             [[NSNotificationCenter defaultCenter] postNotificationName:TBMigrationDidMigrateNotification object:nil userInfo:@{@"result": @(result)}];
         });
     });
+}
+
++ (NSUInteger)databaseVersion:(TBDatabase *)database
+{
+    TBMigration *migration = [[self alloc] initWithDatabase:database];
+    return [migration databaseVersion];
 }
 
 #pragma mark - Protected
@@ -76,17 +88,13 @@ NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNoti
         return YES;
     }
     @catch (NSException *exception) {
+        NSLog(@"migrate exception : %@", exception);
+        [self.database close];
+        [self.database open];
         return NO;
     }
 }
 
-/*****
- // Migrations for database version 1 will run here
- if ([self databaseVersion] < 2) {
- [self createXXXTable];
- return YES;
- }
- *****/
 - (BOOL)migrateWithDatabaseVersion:(NSUInteger)version
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
@@ -138,7 +146,12 @@ NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNoti
 - (void)createApplicationPropertiesTable
 {
     [self executeMigration:@"CREATE TABLE applicationProperties (primaryKey INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, value INTEGER)"];
-    [self executeMigration:@"INSERT INTO applicationProperties (name, value) VALUES('databaseVersion', 0)"];
+    [self insertApplicationProperty:TBApplicationPropertiesKeyDatabaseVersion value:@(0)];
+}
+
+- (void)insertApplicationProperty:(NSString *)propertyName value:(id)value
+{
+    [self executeMigration:@"INSERT INTO applicationProperties (name, value) VALUES(?, ?)", propertyName, value, nil];
 }
 
 - (void)updateApplicationProperty:(NSString *)propertyName value:(id)value
@@ -167,12 +180,12 @@ NSString * const TBMigrationDidMigrateNotification = @"TBMigrationDidMigrateNoti
 
 - (void)setDatabaseVersion:(NSUInteger)version
 {
-    return [self updateApplicationProperty:@"databaseVersion" value:[NSNumber numberWithUnsignedInteger:version]];
+    return [self updateApplicationProperty:TBApplicationPropertiesKeyDatabaseVersion value:@(version)];
 }
 
 - (NSUInteger)databaseVersion
 {
-    return [[self getApplicationProperty:@"databaseVersion"] unsignedIntegerValue];
+    return [[self getApplicationProperty:TBApplicationPropertiesKeyDatabaseVersion] unsignedIntegerValue];
 }
 
 @end
