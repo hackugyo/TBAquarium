@@ -29,6 +29,7 @@ static NSMutableDictionary *__tableCache = nil;
 {
     if (__database != database) {
         __database = database;
+        __tableCache = nil;
     }
 }
 
