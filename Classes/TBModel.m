@@ -49,13 +49,8 @@ static NSMutableDictionary *__tableCache = nil;
 
 
 @interface TBModel ()
-
-@property (nonatomic, assign) BOOL  savedInDatabase;
+@property (nonatomic, assign) BOOL savedInDatabase;
 @property (nonatomic, strong) NSDictionary *propertyList;
-
-+ (void)assertDatabaseExists;
-- (NSArray *)propertyValues;
-
 @end
 
 
@@ -366,14 +361,8 @@ static NSMutableDictionary *__tableCache = nil;
     return [[self database] executeUpdate:sql];
 }
 
-#pragma mark - validate
-
-- (BOOL)valid
-{
-    return YES;
-}
-
 @end
+
 
 static const char * getPropertyType(objc_property_t property) {
     const char *attributes = property_getAttributes(property);
