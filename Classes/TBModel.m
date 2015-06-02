@@ -204,17 +204,17 @@ static NSMutableDictionary *__tableCache = nil;
 
 #pragma mark - CUD Methods
 
-- (void)save
+- (BOOL)save
 {
     [[self class] assertDatabaseExists];
     if (!_savedInDatabase) {
-        [self insert];
+        return [self insert];
     } else {
-        [self update];
+        return [self update];
     }
 }
 
-- (void)insert
+- (BOOL)insert
 {
     NSMutableArray *parameterList = [[NSMutableArray alloc] init];
     NSArray *columns = [self columnsWithoutPrimaryKey];
@@ -223,10 +223,10 @@ static NSMutableDictionary *__tableCache = nil;
     }
 
     NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (%@) values(%@)", [[self class] tableName], [columns componentsJoinedByString:@", "], [parameterList componentsJoinedByString:@","]];
-    [self insertWithSql:sql withValues:[self propertyValues]];
+    return [self insertWithSql:sql withValues:[self propertyValues]];
 }
 
-- (void)insertWithSql:(NSString *)sql withColumns:(NSArray *)columns
+- (BOOL)insertWithSql:(NSString *)sql withColumns:(NSArray *)columns
 {
     NSMutableArray *values = [[NSMutableArray alloc] init];
     for (NSString *column in columns) {
@@ -239,58 +239,63 @@ static NSMutableDictionary *__tableCache = nil;
             [values addObject:[NSNull null]];
     }
 
-    [[self database] executeUpdate:sql withArgumentsInArray:values];
-    _savedInDatabase = YES;
+    BOOL result = [[self database] executeUpdate:sql withArgumentsInArray:values];
+    _savedInDatabase = result;
     _primaryKey = [[self database] lastInsertRowId];
+    return result;
 }
 
-- (void)insertWithSql:(NSString *)sql withValues:(NSArray *)values
+- (BOOL)insertWithSql:(NSString *)sql withValues:(NSArray *)values
 {
-    [[self database] executeUpdate:sql withArgumentsInArray:values];
-    _savedInDatabase = YES;
+    BOOL result = [[self database] executeUpdate:sql withArgumentsInArray:values];
+    _savedInDatabase = result;
     _primaryKey = [[self database] lastInsertRowId];
+    return result;
 }
 
-- (void)update
+- (BOOL)update
 {
     NSString *setValues = [[[self columnsWithoutPrimaryKey] componentsJoinedByString:@" = ?, "] stringByAppendingString:@" = ?"];
     NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE primaryKey = ?", [[self class] tableName], setValues];
     NSArray  *parameters = [[self propertyValues] arrayByAddingObject:@(_primaryKey)];
-    [[self database] executeUpdate:sql withArgumentsInArray:parameters];
-    _savedInDatabase = YES;
+    BOOL result = [[self database] executeUpdate:sql withArgumentsInArray:parameters];
+    _savedInDatabase = result;
+    return result;
 }
 
-- (void)updateWithColumns:(NSArray *)columns
+- (BOOL)updateWithColumns:(NSArray *)columns
 {
     NSString *setValues = [[columns componentsJoinedByString:@" = ?, "] stringByAppendingString:@" = ?"];
     NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE primaryKey = ?", [[self class] tableName], setValues];
     NSArray  *parameters = [[self propertyValuesWithColumns:columns] arrayByAddingObject:@(_primaryKey)];
-    [[self database] executeUpdate:sql withArgumentsInArray:parameters];
-    _savedInDatabase = YES;
+    BOOL result = [[self database] executeUpdate:sql withArgumentsInArray:parameters];
+    _savedInDatabase = result;
+    return result;
 }
 
-- (void)delete
+- (BOOL)delete
 {
     [[self class] assertDatabaseExists];
     if (!_savedInDatabase) {
-        return ;
+        return YES;
     }
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE primaryKey = ?", [[self class] tableName]];
-    [[self database] executeUpdate:sql withArgumentsInArray:@[@(_primaryKey)]];
+    BOOL result = [[self database] executeUpdate:sql withArgumentsInArray:@[@(_primaryKey)]];
     _savedInDatabase = NO;
     _primaryKey = 0;
+    return result;
 }
 
-+ (void)deleteWithCondition:(NSString *)condition withParameters:(NSArray *)parameters
++ (BOOL)deleteWithCondition:(NSString *)condition withParameters:(NSArray *)parameters
 {
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@", [[self class] tableName], condition];
-    [[self database] executeUpdate:sql withArgumentsInArray:parameters];
+    return [[self database] executeUpdate:sql withArgumentsInArray:parameters];
 }
 
-+ (void)deleteAll
++ (BOOL)deleteAll
 {
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@", [self tableName]];
-    [[self database] executeUpdate:sql];
+    return [[self database] executeUpdate:sql];
 }
 
 #pragma mark - validate

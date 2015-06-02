@@ -27,14 +27,14 @@
 + (NSUInteger)count;
 
 - (NSArray *)columnsWithoutPrimaryKey;
-- (void)updateWithColumns:(NSArray *)columns;
-- (void)save;
-- (void)insert;
-- (void)insertWithSql:(NSString *)sql withColumns:(NSArray *)columns;
-- (void)insertWithSql:(NSString *)sql withValues:(NSArray *)values;
-- (void)delete;
-+ (void)deleteWithCondition:(NSString *)condition withParameters:(NSArray *)parameters;
-+ (void)deleteAll;
+- (BOOL)updateWithColumns:(NSArray *)columns;
+- (BOOL)save;
+- (BOOL)insert;
+- (BOOL)insertWithSql:(NSString *)sql withColumns:(NSArray *)columns;
+- (BOOL)insertWithSql:(NSString *)sql withValues:(NSArray *)values;
+- (BOOL)delete;
++ (BOOL)deleteWithCondition:(NSString *)condition withParameters:(NSArray *)parameters;
++ (BOOL)deleteAll;
 
 - (BOOL)valid;
 
