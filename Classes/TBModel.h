@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TBDatabase.h"
 
-@interface TBModel : NSObject
+@interface TBModel : NSObject <NSCopying>
 
 @property (nonatomic, assign) sqlite_int64 primaryKey;
 @property (nonatomic, strong) NSDate     *createdAt;
@@ -40,7 +40,4 @@
 
 - (NSDate *)toLocalCreatedAt;
 
-@end
-
-@interface TBModel (Protected)
 @end

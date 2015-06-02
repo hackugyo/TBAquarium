@@ -96,6 +96,20 @@ static NSMutableDictionary *__tableCache = nil;
     return [[self class] database];
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    TBModel *obj = [[self class] allocWithZone:zone];
+    if (obj) {
+        obj.primaryKey = self.primaryKey;
+        obj.createdAt = self.createdAt;
+        obj.savedInDatabase = self.savedInDatabase;
+        obj.propertyList = self.propertyList;
+    }
+    return obj;
+}
+
 #pragma mark - DB Methods
 
 - (NSDictionary *)propertyList
