@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <TBAquarium.h>
+#import <NSString+TBAquarium.h>
 #import "ExampleMigration.h"
 
 static NSString * const kDBFileName = @"tbaquarium.db";
@@ -25,6 +26,10 @@ static NSString * const kDBFileName = @"tbaquarium.db";
     [self prepareDatabase];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    NSArray *strings = @[@"history", @"knife", @"post", @"ox"];
+    for (NSString *str in strings) {
+        NSLog(@"%@ => %@", str, [str tb_pluralizeString]);
+    }
     return YES;
 }
 
