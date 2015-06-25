@@ -95,7 +95,7 @@ static NSMutableDictionary *__tableCache = nil;
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    TBModel *obj = [[self class] allocWithZone:zone];
+    TBModel *obj = [[[self class] allocWithZone:zone] init];
     if (obj) {
         obj.primaryKey = self.primaryKey;
         obj.createdAt = self.createdAt;
