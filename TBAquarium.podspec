@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "TBAquarium"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "OR Mapper with FMDB for iOS"
   s.homepage     = "https://github.com/matsuda/TBAquarium"
   s.license      = 'MIT'
